@@ -8,4 +8,25 @@ describe Rental do
       expect(rental.charge).to eq(6.5)
     end
   end
+
+  describe '#frequent_renter_points' do
+    context 'regular movies' do
+      it 'should return 1 if the movie is not new release' do
+        movie = Movie.new('Two Faces', Movie::REGULAR)
+        rental = Rental.new(movie, 5)
+
+        expect(rental.frequent_renter_points).to eq(1)
+      end
+    end
+
+    context 'new release movies' do
+      it 'should return 2 if the movie is new release' do
+        movie = Movie.new('Cat', Movie::NEW_RELEASE)
+        rental = Rental.new(movie, 15)
+
+        expect(rental.frequent_renter_points).to eq(2)
+      end
+    end
+  end
+
 end
