@@ -1,9 +1,17 @@
 require 'spec_helper'
 
 describe Customer do
-  describe '#statement' do
-    let(:customer) { Customer.new('Johnny') }
+  let(:customer) { Customer.new('Johnny') }
 
+  describe '#amount_for' do
+    it 'calculate how much a rent costs' do
+      movie = Movie.new('Two Faces', Movie::REGULAR)
+      rental = Rental.new(movie, 5)
+      expect(customer.amount_for(rental)).to eq(6.5)
+    end
+  end
+
+  describe '#statement' do
     context 'regular movies' do
       it 'should return the statement after renting a movie' do
         movie1 = Movie.new('Two Faces', Movie::REGULAR)
