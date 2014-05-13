@@ -8,6 +8,9 @@
 require_relative '../customer'
 require_relative '../movie'
 require_relative '../rental'
+require_relative '../new_release_price'
+require_relative '../regular_price'
+require_relative '../children_price'
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
