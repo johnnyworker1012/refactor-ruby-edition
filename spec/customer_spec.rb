@@ -6,7 +6,7 @@ describe Customer do
   describe '#statement' do
     context 'regular movies' do
       it 'should return the statement after renting a movie' do
-        movie1 = Movie.new('Two Faces', Movie::REGULAR)
+        movie1 = Movie.new('Two Faces', RegularPrice.new)
         rental1 = Rental.new(movie1, 5)
         customer.add_rental(rental1)
 
@@ -19,11 +19,11 @@ describe Customer do
 
     context 'regular, children movies' do
       it 'should return the statement after renting a movie' do
-        movie1 = Movie.new('Two Faces', Movie::REGULAR)
+        movie1 = Movie.new('Two Faces', RegularPrice.new)
         rental1 = Rental.new(movie1, 5)
         customer.add_rental(rental1)
 
-        movie2 = Movie.new('Big Fish', Movie::CHILDRENS)
+        movie2 = Movie.new('Big Fish', ChildrenPrice.new)
         rental2 = Rental.new(movie2, 1)
         customer.add_rental(rental2)
 
@@ -37,15 +37,15 @@ describe Customer do
 
     context 'regular, children, new release movies' do
       it 'should return the statement after renting a movie' do
-        movie1 = Movie.new('Two Faces', Movie::REGULAR)
+        movie1 = Movie.new('Two Faces', RegularPrice.new)
         rental1 = Rental.new(movie1, 5)
         customer.add_rental(rental1)
 
-        movie2 = Movie.new('Big Fish', Movie::CHILDRENS)
+        movie2 = Movie.new('Big Fish', ChildrenPrice.new)
         rental2 = Rental.new(movie2, 1)
         customer.add_rental(rental2)
 
-        movie3 = Movie.new('Cat', Movie::NEW_RELEASE)
+        movie3 = Movie.new('Cat', NewReleasePrice.new)
         rental3 = Rental.new(movie3, 15)
         customer.add_rental(rental3)
 

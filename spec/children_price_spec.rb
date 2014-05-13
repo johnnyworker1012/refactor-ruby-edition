@@ -4,7 +4,7 @@ describe 'ChildrenPrice' do
   describe '#charge' do
     context 'rented days less than 3 days' do
       it 'should charge a regular price' do
-        movie = Movie.new('Cat', Movie::CHILDRENS)
+        movie = Movie.new('Cat', ChildrenPrice.new)
         rental = Rental.new(movie, 1)
 
         expect(movie.price.charge(rental.days_rented)).to eq(1.5)
@@ -13,7 +13,7 @@ describe 'ChildrenPrice' do
 
     context 'rented days more than 3 days' do
       it 'should charge a regular price' do
-        movie = Movie.new('Cat', Movie::CHILDRENS)
+        movie = Movie.new('Cat', ChildrenPrice.new)
         rental = Rental.new(movie, 5)
 
         expect(movie.price.charge(rental.days_rented)).to eq(4.5)
